@@ -1,5 +1,7 @@
+body{
+  background: bisque;
+}
 .app {
-  background-color: bisque;
   text-align: center;
   display: flex;
   flex-direction: column;
