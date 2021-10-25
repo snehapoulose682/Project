@@ -33,7 +33,6 @@ class Fetch extends Component {
                             Name: {item.name},
                             User_Name: {item.email},
                             Password: {item.username},
-                            Phone: {item.phone},
                             Website:{item.website}
                         </ol>
                     ))
