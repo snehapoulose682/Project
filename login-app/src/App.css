@@ -1,18 +1,12 @@
+body{
+  background: bisque;
+}
 .app {
   text-align: center;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  margin: 15px 20px;
-  background-color: bisque;
-}
-.container {
-  text-align: center;
-  display: flex;
-  flex-direction: column;
-  margin: 15px 20px;
-  background-color: bisque;
 }
 .login-button{
   padding: 15px 22px;
