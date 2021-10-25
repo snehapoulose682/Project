@@ -1,5 +1,7 @@
 import './App.css';
 import React, { Component } from "react"
+import Fetch from './Fetch';
+import { BrowserRouter as Router,Switch,Route,Link } from 'react-router-dom';
 
 class App extends React.Component {
   constructor() {
@@ -23,10 +25,11 @@ class App extends React.Component {
   }
   render() {
     return (
+      <Router>
       <div className="app">
         <h1>Login Page </h1>
         <form onSubmit={this.handleSubmit}>
-          <label>Username:
+          <label>Username :
             <input type="text"
               className="username-input"
               name="username"
@@ -34,7 +37,7 @@ class App extends React.Component {
               onChange={this.handleChange} />
           </label>
           <br />
-          <label>Password:
+          <label>Password :
             <input type="password"
               className="password-input"
               name="password"
@@ -44,7 +47,18 @@ class App extends React.Component {
           <br />
           <input type="submit" className="login-button" value="Login" />
         </form>
+        <ul>
+          <li>
+              <Link to ="/fetch">Fetch</Link>
+          </li>
+        </ul>
+      <Switch>
+          <Route path ="/fetch">
+              <Fetch/>
+          </Route>
+      </Switch>
       </div>
+      </Router>
 
     )
   }
