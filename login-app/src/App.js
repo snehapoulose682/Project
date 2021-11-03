@@ -1,67 +1,31 @@
-import './App.css';
-import React, { Component } from "react"
-import Fetch from './Fetch';
-import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
+import React from 'react';
+import Header from './Header';
+import LoginUser from './Login';
+import Posts from './Posts';
+import { Route,Switch, BrowserRouter as Router } from 'react-router-dom';
+import Details from './Details';
 
 class App extends React.Component {
-  constructor() {
-    super()
-    this.state = {
-      username: "",
-      password: ""
+
+    constructor() {
+        super();
     }
-    this.handleChange = this.handleChange.bind(this)
-    this.handleSubmit = this.handleSubmit.bind(this)
-  }
-  handleChange(event) {
-    this.setState({
-      [event.target.name]: event.target.value
-    })
-  }
-  handleSubmit(event) {
-    alert(' The entered username is : ' + this.state.username);
-    alert('The entered password is : ' + this.state.password);
-    event.preventDefault();
-  }
-  render() {
-    return (
-      <Router>
-        <div className="app">
-          <h1>Login Page </h1>
-          <form onSubmit={this.handleSubmit}>
-            <label>Username :
-              <input type="text"
-                className="username-input"
-                name="username"
-                value={this.state.username}
-                onChange={this.handleChange} required />
-            </label>
-            <br />
-            <label>Password :
-              <input type="password"
-                className="password-input"
-                name="password"
-                value={this.state.password}
-                onChange={this.handleChange} required />
-            </label>
-            <br />
-            <button type="submit" className="login-button">
-              Login
-            </button>
-          </form>
-          <ul>
-            <li>
-              <Link to="/fetch">Fetch</Link>
-            </li>
-          </ul>
-          <Switch>
-            <Route path="/fetch">
-              <Fetch />
-            </Route>
-          </Switch>
-        </div>
-      </Router>
-    )
-  }
+
+    render() {
+        return (
+            <Router>
+                <Route path="/Login">
+                    <LoginUser />
+                </Route>
+                <Route path="/Details">
+                    <Details />
+                </Route>
+                <Route path = "/Posts">
+                    <Posts/>
+                </Route>
+            </Router>
+        )
+    }
 }
+
 export default App;
