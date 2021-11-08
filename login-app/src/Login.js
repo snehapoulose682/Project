@@ -1,8 +1,9 @@
-import './Login.css';
-import Details from './Details';
-import { withRouter } from 'react-router';
-import React, { Component } from "react"
-import Header from './Header';
+import "./Login.css";
+import Details from "./Details";
+import Posts from "./Posts";
+import { withRouter } from "react-router";
+import React, { Component } from "react";
+import Header from "./Header";
 
 class Login extends Component {
   constructor(props) {
@@ -10,76 +11,76 @@ class Login extends Component {
     this.state = {
       username: "",
       password: "",
-      users: []
+      users: [],
     };
-    this.handleChange = this.handleChange.bind(this)
-    this.handleSubmit = this.handleSubmit.bind(this)
+    this.handleChange = this.handleChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
   handleChange(event) {
     this.setState({
-      [event.target.name]: event.target.value
-    })
+      [event.target.name]: event.target.value,
+    });
   }
   handleSubmit(event) {
     event.preventDefault();
-    const userid = this.state.username
-    const pswd = this.state.password
-    const users = this.state.users
-    const { history } = this.props
-    users.filter((user) => {
-      if (userid === user.email && pswd === user.username)
-      {
-        localStorage.setItem('data',JSON.stringify(user));
-        history.push('/Details');
-
+    //const {userid,pswd,users} = this.state;
+    const userid = this.state.username;
+    const pswd = this.state.password;
+    const users = this.state.users;
+    const { history } = this.props;
+    users.forEach((user) => {
+      if (userid === user.email && pswd === user.username) {
+        localStorage.setItem("data", JSON.stringify(user));
+        history.push("/posts");
       }
-
-
-
-    })
-    //console.log(loggedInUser)
+    });
   }
   componentDidMount() {
-    fetch(
-      "https://jsonplaceholder.typicode.com/users")
+    fetch("https://jsonplaceholder.typicode.com/users")
       .then((response) => response.json())
       .then((json) => {
         this.setState({
-          users: json
+          users: json,
         });
-      })
+      });
   }
 
   render() {
     return (
       <div className="app">
-        <Header/>
+        <Header />
         <h1> LOGIN </h1>
         <form onSubmit={this.handleSubmit}>
-          <label>Username :
-            <input type="text"
+          <label>
+            Username :
+            <input
+              type="text"
               className="username-input"
               name="username"
               value={this.state.username}
-              onChange={this.handleChange} required />
+              onChange={this.handleChange}
+              required
+            />
           </label>
           <br />
-          <label>Password :
-            <input type="password"
+          <label>
+            Password :
+            <input
+              type="password"
               className="password-input"
               name="password"
               value={this.state.password}
-              onChange={this.handleChange} required />
+              onChange={this.handleChange}
+              required
+            />
           </label>
           <br />
           <button type="submit" className="login-button">
             Login
           </button>
         </form>
-
       </div>
-    )
+    );
   }
 }
-const LoginUser = withRouter(Login);
-export default LoginUser;
+export default withRouter(Login);

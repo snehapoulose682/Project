@@ -30,6 +30,8 @@ body{
   margin: 15px 20px;
 }
 .log-out{
+  margin-right: 100px;
+  margin-top: 25px;
   display: flex;
   justify-content: flex-end;
   flex-flow: column wrap;
@@ -38,6 +40,39 @@ body{
   font-size: 20px;
   color: black;
   font-weight: bold;
+}
+.form--user-input {
+  padding: 50px;
+  border-color:green ;
+  border-style: solid;
+
+}
+.btn--log-out {
+  margin-right: 40px;
+  margin-top: 25px;
+  display: flex;
+  justify-content: flex-end;
+  align-content: flex-end;
+  float: right;
+  padding: 15px;
+  cursor: pointer;
+}
+@media  (max-width:380px) {
+  .app{
+    font-size: 10px;
+  }
+  .log-out{
+    margin-right: 20px;
+    margin-top: 20px;
+    display: flex;
+    justify-content: flex-end;
+    flex-flow: column wrap;
+    align-content: flex-end;
+    text-decoration: none;
+    font-size: 20px;
+    color: black;
+    font-weight: bold;
+  }
 }
 
 
